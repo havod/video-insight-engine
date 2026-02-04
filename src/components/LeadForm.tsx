@@ -45,7 +45,7 @@ const LeadForm = ({ isOpen, onClose }: LeadFormProps) => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.3 }}
-            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-md"
+            className="fixed inset-x-4 top-1/2 -translate-y-1/2 z-50 mx-auto max-w-md sm:inset-x-0 sm:left-1/2 sm:-translate-x-1/2"
           >
             <div className="bg-glass rounded-2xl p-8 border border-border/50 shadow-2xl">
               <div className="flex items-center justify-between mb-6">
