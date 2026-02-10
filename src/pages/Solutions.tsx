@@ -4,14 +4,12 @@ import { Search, ShieldAlert, Building2, HeartPulse, Scale, Film, ChevronRight, 
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import LeadForm from "@/components/LeadForm";
-import videoSearchDemo from "@/assets/video-search-demo.mp4";
-import videoAlertsDemo from "@/assets/video-alerts-demo.mp4";
 
 const capabilities = [
   {
     id: "search",
     icon: Search,
-    video: videoSearchDemo,
+    
     title: "Natural Language Video Search",
     shortDesc: "Search across thousands of hours of footage using plain language.",
     description:
@@ -26,7 +24,7 @@ const capabilities = [
   {
     id: "alerts",
     icon: ShieldAlert,
-    video: videoAlertsDemo,
+    
     title: "Smart Video Surveillance & Alerts",
     shortDesc: "Define custom rules and get real-time alerts from live feeds.",
     description:
@@ -145,7 +143,7 @@ const Solutions = () => {
                 className="bg-glass rounded-2xl p-8 md:p-10 border border-border/30"
               >
                 <div className="grid md:grid-cols-[1fr_1.2fr] gap-8 items-start">
-                  {/* Left: capability info + video */}
+                  {/* Left: capability info */}
                   <div>
                     <div className="flex items-center gap-3 mb-4">
                       <div className="w-11 h-11 rounded-lg bg-gradient-to-br from-primary to-glow-secondary flex items-center justify-center">
@@ -153,17 +151,7 @@ const Solutions = () => {
                       </div>
                       <h2 className="text-xl font-bold">{cap.title}</h2>
                     </div>
-                    <p className="text-muted-foreground leading-relaxed mb-5">{cap.description}</p>
-                    <div className="rounded-xl overflow-hidden border border-border/20">
-                      <video
-                        src={cap.video}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="w-full h-auto"
-                      />
-                    </div>
+                    <p className="text-muted-foreground leading-relaxed">{cap.description}</p>
                   </div>
 
                   {/* Right: sector-specific use case */}
