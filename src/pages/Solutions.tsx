@@ -14,10 +14,10 @@ const capabilities = [
     description:
       "Ask questions like \"Show me every time a red truck appeared last week\" and get instant, precise results from your entire video library. No tagging, no manual indexing — just AI that understands what you're looking for.",
     sectors: {
-      security: "Instantly retrieve footage of specific incidents, people, or vehicles across all your cameras.",
-      health: "Find specific surgical procedures, patient interactions, or training moments in medical video archives.",
-      legal: "Search deposition recordings, body-cam footage, or surveillance evidence by describing what you need.",
-      media: "Locate the exact shot, scene, or interview across your entire production library in seconds.",
+      security: "Identify a suspect wearing a blue jacket near entrance B at 3 AM, trace a vehicle's path across 50+ camera feeds, or find every instance of tailgating at restricted doors — all by simply describing what you're looking for. No more scrubbing through hours of footage manually.",
+      health: "Search across OR recordings to find specific laparoscopic techniques, locate patient fall incidents for review, or retrieve physiotherapy session footage by describing the exercise performed. Ideal for clinical training, incident review, and quality assurance audits.",
+      legal: "Describe a key moment — \"witness pointing at exhibit A\" — and instantly surface it from hundreds of hours of deposition video. Cross-reference body-cam footage by location, time, and observed actions to build airtight evidentiary timelines.",
+      media: "Find the perfect B-roll of a sunset over a cityscape, locate every interview where a guest mentioned a specific topic, or pull together highlight reels from live event recordings — all without manual logging or timecodes.",
     },
   },
   {
@@ -28,10 +28,10 @@ const capabilities = [
     description:
       "Set up intelligent monitoring rules in plain language — \"Alert me if someone enters Zone B after 10 PM\" — and receive instant notifications. No complex configuration, just describe what matters to you.",
     sectors: {
-      security: "Detect unauthorized access, perimeter breaches, or unusual crowd behavior and trigger instant alerts.",
-      health: "Monitor patient rooms for falls, unusual inactivity, or equipment tampering with real-time notifications.",
-      legal: "Track chain-of-custody compliance and courtroom activity with automated rule-based alerts.",
-      media: "Monitor live broadcasts for content policy violations or detect specific on-screen events in real time.",
+      security: "Define rules like \"alert if someone lingers near the server room for more than 2 minutes after hours\" or \"notify me when a vehicle stops in the no-parking zone.\" Get instant push notifications with timestamped clips — turning passive cameras into proactive security agents.",
+      health: "Set up monitors such as \"alert if a patient in Room 204 hasn't moved for 30 minutes\" or \"notify nursing staff when someone approaches the medication cabinet outside scheduled rounds.\" Helps reduce response times for falls, wandering patients, and unauthorized access to sensitive areas.",
+      legal: "Automate evidence integrity with rules like \"alert if the evidence locker is accessed without a sign-in\" or \"flag any courtroom footage where exhibits are handled without gloves.\" Ensure chain-of-custody compliance and courtroom protocol adherence without manual monitoring.",
+      media: "Monitor live broadcasts with rules like \"alert if the lower-third graphic is missing for more than 10 seconds\" or \"flag any segment containing unblurred faces.\" Catch content policy violations, FCC compliance issues, or branding inconsistencies before they air.",
     },
   },
 ];
