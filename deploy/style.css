@@ -1,0 +1,22 @@
+/*
+Theme Name: Mon Theme React
+Theme URI: https://astuse.com
+Author: Votre Nom
+Author URI: https://astuse.com
+Description: Thème WordPress personnalisé avec React/Vite
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: mon-theme-react
+Tags: react, modern, custom
+*/
+
+/* Vous pouvez ajouter des styles WordPress globaux ici si nécessaire */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  min-height: 100vh;
+}

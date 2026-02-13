@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 
 const PartnersSection = () => {
-  // Placeholder logos - replace with actual partner/incubator logos
+  // Remplacez les URLs par vos vrais chemins de logos
   const partners = [
-    { name: "Incubator 1", placeholder: "I1" },
-    { name: "Incubator 2", placeholder: "I2" },
-    { name: "Incubator 3", placeholder: "I3" },
-    { name: "Partner 4", placeholder: "P4" },
+    { 
+      name: "La base", 
+      logo: "/logos/labase.webp" // Chemin depuis le dossier public/
+    },
   ];
 
   return (
@@ -44,10 +44,11 @@ const PartnersSection = () => {
               className="group"
             >
               <div className="w-32 h-20 md:w-40 md:h-24 bg-glass rounded-xl flex items-center justify-center border border-border/50 hover:border-primary/30 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/5">
-                {/* Replace with actual logo images */}
-                <span className="text-2xl font-bold text-muted-foreground group-hover:text-foreground transition-colors">
-                  {partner.placeholder}
-                </span>
+                <img 
+                  src={partner.logo} 
+                  alt={`Logo ${partner.name}`}
+                  className="max-w-full max-h-full object-contain p-4 filter brightness-90 group-hover:brightness-100 transition-all"
+                />
               </div>
             </motion.div>
           ))}

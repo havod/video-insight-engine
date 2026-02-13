@@ -1,3 +1,4 @@
+// src/pages/Index.tsx - GARDE LA VERSION ORIGINALE
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";

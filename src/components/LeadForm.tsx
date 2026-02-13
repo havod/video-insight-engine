@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { X, Send, CheckCircle } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import { wpService } from '@/services/wordpress';
 
 interface LeadFormProps {
   isOpen: boolean;
@@ -13,20 +15,61 @@ const LeadForm = ({ isOpen, onClose }: LeadFormProps) => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [company, setCompany] = useState("");
+  const [message, setMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would integrate with your backend
-    console.log("Lead submitted:", { name, email, company });
-    setSubmitted(true);
-    setTimeout(() => {
-      onClose();
-      setSubmitted(false);
-      setEmail("");
-      setName("");
-      setCompany("");
-    }, 2000);
+    setIsSubmitting(true);
+
+    try {
+      // MODIFIE SEULEMENT CETTE PARTIE
+      const response = await fetch(window.wpData.ajaxUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({
+          action: 'submit_lead',
+          nonce: window.wpData.nonce,
+          name,
+          email,
+          company,
+          message,
+        }),
+      });
+      await wpService.submitLead({ name, email, company, message });
+
+      const result = await response.json();
+
+      if (result.success) {
+        toast({
+          title: "Success!",
+          description: "We'll be in touch soon.",
+        });
+        
+        // Reset form
+        setName("");
+        setEmail("");
+        setCompany("");
+        setMessage("");
+        setSubmitted(true); 
+        
+        onClose();
+      } else {
+        throw new Error(result.data?.message || 'Submission failed');
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
