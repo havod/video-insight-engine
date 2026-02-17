@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const PartnersSection = () => {
   const partners = [
-    { name: "La base entrepreneuriale", logo: "/partners/logo_labase.webp" },
+    { name: "La base", logo: "/partners/logo_labase.png" },
   ];
 
   return (
