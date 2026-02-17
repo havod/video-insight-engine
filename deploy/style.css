@@ -1,0 +1,24 @@
+/*
+Theme Name: Astuse
+Theme URI: https://astuse.com
+Author: Astuse
+Author URI: https://astuse.com
+Description: AI-powered video intelligence platform – WordPress theme with React/Vite frontend.
+Version: 1.0.0
+Requires at least: 6.0
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: astuse
+Tags: react, modern, custom, one-page
+*/
+
+/* Global resets – the React bundle handles all visual styling. */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  min-height: 100vh;
+}

@@ -2,7 +2,8 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { X, Send, CheckCircle } from "lucide-react";
+import { X, Send, CheckCircle, Loader2 } from "lucide-react";
+import { toast } from "sonner";
 
 interface LeadFormProps {
   isOpen: boolean;
@@ -15,20 +16,54 @@ const LeadForm = ({ isOpen, onClose }: LeadFormProps) => {
   const [company, setCompany] = useState("");
   const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const resetForm = () => {
+    setEmail("");
+    setName("");
+    setCompany("");
+    setMessage("");
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would integrate with your backend
-    console.log("Lead submitted:", { name, email, company, message });
-    setSubmitted(true);
-    setTimeout(() => {
-      onClose();
-      setSubmitted(false);
-      setEmail("");
-      setName("");
-      setCompany("");
-      setMessage("");
-    }, 2000);
+    setLoading(true);
+
+    try {
+      if (window.wpData) {
+        const formData = new FormData();
+        formData.append("action", "submit_lead");
+        formData.append("nonce", window.wpData.nonce);
+        formData.append("name", name);
+        formData.append("email", email);
+        formData.append("company", company);
+        formData.append("message", message);
+
+        const response = await fetch(window.wpData.ajaxUrl, {
+          method: "POST",
+          body: formData,
+        });
+
+        const result = await response.json();
+
+        if (!result.success) {
+          throw new Error(result.data?.message || "Submission failed");
+        }
+      } else {
+        console.log("Lead submitted (dev mode):", { name, email, company, message });
+      }
+
+      setSubmitted(true);
+      setTimeout(() => {
+        onClose();
+        setSubmitted(false);
+        resetForm();
+      }, 2000);
+    } catch (error) {
+      toast.error("An error occurred. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -113,9 +148,9 @@ const LeadForm = ({ isOpen, onClose }: LeadFormProps) => {
                       className="w-full rounded-md bg-secondary/50 border border-border/50 focus:border-primary px-3 py-2 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 resize-none"
                     />
                   </div>
-                  <Button type="submit" variant="hero" size="lg" className="w-full">
-                    <Send className="w-4 h-4" />
-                    Request Access
+                  <Button type="submit" variant="hero" size="lg" className="w-full" disabled={loading}>
+                    {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
+                    {loading ? "Sending..." : "Request Access"}
                   </Button>
                   <p className="text-xs text-center text-muted-foreground">
                     By submitting, you agree to our terms of service.
