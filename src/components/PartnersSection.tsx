@@ -1,12 +1,8 @@
 import { motion } from "framer-motion";
 
 const PartnersSection = () => {
-  // Placeholder logos - replace with actual partner/incubator logos
   const partners = [
-    { name: "Incubator 1", placeholder: "I1" },
-    { name: "Incubator 2", placeholder: "I2" },
-    { name: "Incubator 3", placeholder: "I3" },
-    { name: "Partner 4", placeholder: "P4" },
+    { name: "La base entrepreneuriale", logo: "/partners/logo_labase.webp" },
   ];
 
   return (
@@ -43,11 +39,12 @@ const PartnersSection = () => {
               transition={{ duration: 0.4, delay: index * 0.1 }}
               className="group"
             >
-              <div className="w-32 h-20 md:w-40 md:h-24 bg-glass rounded-xl flex items-center justify-center border border-border/50 hover:border-primary/30 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/5">
-                {/* Replace with actual logo images */}
-                <span className="text-2xl font-bold text-muted-foreground group-hover:text-foreground transition-colors">
-                  {partner.placeholder}
-                </span>
+              <div className="w-32 h-20 md:w-40 md:h-24 bg-glass rounded-xl flex items-center justify-center border border-border/50 hover:border-primary/30 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/5 p-4">
+                <img
+                  src={partner.logo}
+                  alt={partner.name}
+                  className="max-w-full max-h-full object-contain opacity-70 group-hover:opacity-100 transition-opacity"
+                />
               </div>
             </motion.div>
           ))}
