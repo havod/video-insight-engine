@@ -13,12 +13,13 @@ const LeadForm = ({ isOpen, onClose }: LeadFormProps) => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [company, setCompany] = useState("");
+  const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Here you would integrate with your backend
-    console.log("Lead submitted:", { name, email, company });
+    console.log("Lead submitted:", { name, email, company, message });
     setSubmitted(true);
     setTimeout(() => {
       onClose();
@@ -26,6 +27,7 @@ const LeadForm = ({ isOpen, onClose }: LeadFormProps) => {
       setEmail("");
       setName("");
       setCompany("");
+      setMessage("");
     }, 2000);
   };
 
@@ -100,6 +102,15 @@ const LeadForm = ({ isOpen, onClose }: LeadFormProps) => {
                       value={company}
                       onChange={(e) => setCompany(e.target.value)}
                       className="bg-secondary/50 border-border/50 focus:border-primary"
+                    />
+                  </div>
+                  <div>
+                    <textarea
+                      placeholder="Your message"
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      rows={3}
+                      className="w-full rounded-md bg-secondary/50 border border-border/50 focus:border-primary px-3 py-2 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 resize-none"
                     />
                   </div>
                   <Button type="submit" variant="hero" size="lg" className="w-full">
