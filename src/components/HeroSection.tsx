@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Play, Video, Eye, Zap } from "lucide-react";
+import heroBg from "@/assets/hero-bg.jpg";
 
 interface HeroSectionProps {
   onGetStarted: () => void;
@@ -9,9 +10,12 @@ interface HeroSectionProps {
 const HeroSection = ({ onGetStarted }: HeroSectionProps) => {
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-      {/* Background gradient orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse-glow" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-glow-secondary/15 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
+      {/* Full-bleed background image */}
+      <div className="absolute inset-0">
+        <img src={heroBg} alt="" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/80 to-transparent" />
+      </div>
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -70,14 +74,14 @@ const HeroSection = ({ onGetStarted }: HeroSectionProps) => {
             <div className="relative animate-float">
               <div className="absolute inset-0 bg-gradient-to-r from-primary/30 to-glow-secondary/30 rounded-2xl blur-2xl" />
               <div className="relative bg-glass rounded-2xl p-6 border border-border/50">
-                <div className="aspect-video bg-secondary/50 rounded-lg overflow-hidden relative">
+                <div className="aspect-video rounded-lg overflow-hidden relative">
+                  <img src={heroBg} alt="AI video surveillance network" className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-primary/10" />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center backdrop-blur-sm border border-primary/30">
                       <Play className="w-8 h-8 text-primary fill-current ml-1" />
                     </div>
                   </div>
-                  {/* Video scan lines effect */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-primary/5" />
                   <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-destructive/90 text-destructive-foreground text-xs font-medium flex items-center gap-1">
                     <span className="w-2 h-2 rounded-full bg-current animate-pulse" />
                     LIVE
