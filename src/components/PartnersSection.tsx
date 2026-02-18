@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { assetUrl } from "@/lib/utils";
 
 const PartnersSection = () => {
   const partners = [
@@ -41,7 +42,7 @@ const PartnersSection = () => {
             >
               <div className="w-32 h-20 md:w-40 md:h-24 bg-glass rounded-xl flex items-center justify-center border border-border/50 hover:border-primary/30 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/5 p-4">
                 <img
-                  src={partner.logo}
+                  src={assetUrl(partner.logo)}
                   alt={partner.name}
                   className="max-w-full max-h-full object-contain opacity-70 group-hover:opacity-100 transition-opacity"
                 />
