@@ -1,13 +1,16 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Play } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 interface NavbarProps {
   onGetStarted: () => void;
 }
 
 const Navbar = ({ onGetStarted }: NavbarProps) => {
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+
   return (
     <motion.nav 
       initial={{ y: -100, opacity: 0 }}
@@ -24,9 +27,18 @@ const Navbar = ({ onGetStarted }: NavbarProps) => {
         </Link>
         
         <div className="hidden md:flex items-center gap-8">
-          <a href="#features" className="text-muted-foreground hover:text-foreground transition-colors">Features</a>
-          <Link to="/solutions" className="text-muted-foreground hover:text-foreground transition-colors">Solutions</Link>
-          <a href="#partners" className="text-muted-foreground hover:text-foreground transition-colors">Partners</a>
+          {isHome ? (
+            <>
+              <a href="#features" className="text-muted-foreground hover:text-foreground transition-colors">Features</a>
+              <Link to="/solutions" className="text-muted-foreground hover:text-foreground transition-colors">Solutions</Link>
+              <a href="#partners" className="text-muted-foreground hover:text-foreground transition-colors">Partners</a>
+            </>
+          ) : (
+            <>
+              <Link to="/" className="text-muted-foreground hover:text-foreground transition-colors">Home</Link>
+              <span className="text-foreground font-medium">Solutions</span>
+            </>
+          )}
         </div>
         
         <Button variant="hero" size="lg" onClick={onGetStarted}>
